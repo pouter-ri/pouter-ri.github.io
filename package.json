@@ -14,7 +14,6 @@
     "preview": "vite preview",
     "preview:dev": "vite preview --mode development",
     "preview:prod": "vite preview --mode production",
-    "predeploy": "npm run build:dev",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
