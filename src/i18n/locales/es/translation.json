@@ -1,0 +1,630 @@
+{
+  "common": {
+    "learnMore": "Más información",
+    "next": "Siguiente",
+    "previous": "Anterior"
+  },
+  "nav": {
+    "menu": {
+      "features": "Características",
+      "testimonials": "Testimonios",
+      "pricing": "Precios",
+      "faq": "FAQ"
+    },
+    "products": {
+      "title": "Productos",
+      "dropdown": {
+        "carrier": {
+          "label": "Weload Carrier",
+          "description": "Plataforma completa para gestión de flotas de transportistas",
+          "href": "#carrier"
+        },
+        "shipper": {
+          "label": "Weload Shipper",
+          "description": "Próximamente",
+          "href": "#shipper"
+        }
+      }
+    },
+    "buttons": {
+      "contact": "Contáctanos"
+    }
+  },
+  "hero": {
+    "title": "Somos ",
+    "highlightedTitle": "WeLoad Solutions",
+    "description": "Una nueva startup canadiense con un equipo técnico con sede en Túnez, Túnez. Estamos construyendo una plataforma de transporte de camiones (web y móvil) con aplicaciones dedicadas para Transportistas y Cargadores. Nuestro mercado objetivo inicial es Canadá, con planes de expandirnos a EE. UU. a continuación.",
+    "carrierApp": "WeLoad Carrier",
+    "shipperApp": "WeLoad Shipper",
+    "watchDemo": "Ver demostración de la plataforma",
+    "trustedBy": "Confiado por 10,000+ empresas logísticas",
+    "startupTagline": "Startup Canadiense • Tecnología Global",
+    "marketFocus": "Comenzando en Canadá",
+    "expansionPlans": "Expandirse a EE. UU. próximamente",
+    "stats": {
+      "activeCarriers": "Transportistas activos",
+      "costReduction": "Reducción de costos",
+      "carbonOffset": "Compensación de carbono",
+      "onTimeRate": "Tasa de puntualidad"
+    },
+    "mockStats": {
+      "revenue": "Ingresos",
+      "loads": "Cargas activas",
+      "miles": "Millas diarias",
+      "rating": "Calificación"
+    },
+    "features": {
+      "canadianStartup": "Startup Canadiense",
+      "techInTunisia": "Equipo técnico en Túnez",
+      "northAmericaExpansion": "Expansión por América del Norte"
+    },
+    "mockDashboard": {
+      "title": "Plataforma WeLoad",
+      "subtitle": "Tablero de operaciones en vivo",
+      "live": "Datos en vivo",
+      "activeLoads": "Cargas activas y seguimiento",
+      "realTime": "Actualizaciones en tiempo real"
+    }
+  },
+  "carrier": {
+    "title": "Carrier",
+    "subtitle": "Plataforma Completa para Transportistas",
+    "description": "Tres aplicaciones potentes que funcionan juntas: Aplicaciones Web y Móviles para despachadores y gerentes, y una App Móvil para Conductores en la carretera. Todas construidas con tecnología moderna para el máximo rendimiento y confiabilidad.",
+    "featuresTitle": "Características Clave para",
+    "modernCarriers": "Transportistas Modernos",
+    "webDashboard": "App Web para Gerentes y Despachadores",
+    "webDescription": "Plataforma completa de gestión de flotas para despachadores y gerentes",
+    "managerApp": "App Móvil para Gerentes y Despachadores",
+    "managerDescription": "Gestión sobre la marcha para supervisores de flotas",
+    "driverApp": "App Móvil para Conductores",
+    "driverDescription": "Interfaz sencilla e intuitiva para conductores profesionales",
+    "features": {
+      "web": {
+        "realTimeTracking": "Seguimiento en tiempo real de conductores en mapas interactivos",
+        "backhaulOptimization": "Optimización de carga de retorno para eliminar millas vacías",
+        "customizableRoutes": "Preferencias de ruta personalizables (evitar peajes, malos caminos)",
+        "dynamicETA": "Cálculos dinámicos de ETA con integración de tráfico",
+        "loadManagement": "Gestión de cargas en vista de calendario/lista",
+        "carbonTracking": "Seguimiento y reporte de huella de carbono",
+        "laneSuggestions": "Sugerencias y optimización de carriles preferidos",
+        "restStopRecommendations": "Recomendaciones de paradas de descanso (restaurantes, áreas de descanso)"
+      },
+      "manager": {
+        "realTimeMonitoring": "Monitoreo en tiempo real del estado de las cargas",
+        "instantCommunication": "Comunicación instantánea con conductores",
+        "quickDispatch": "Despacho y reasignación rápidos",
+        "documentManagement": "Escaneo y gestión de documentos",
+        "performanceAnalytics": "Tablero de análisis de rendimiento",
+        "emergencyAlerts": "Manejo de alertas de emergencia"
+      },
+      "driver": {
+        "truckNavigation": "Navegación paso a paso optimizada para camiones",
+        "loadAcceptance": "Aceptación fácil de cargas con un toque",
+        "digitalPaperwork": "Envío de documentación digital",
+        "routeUpdates": "Actualizaciones y alertas de ruta en tiempo real",
+        "loadViews": "Vista de calendario/lista de cargas asignadas",
+        "restStopFinder": "Buscador de paradas de descanso con servicios",
+        "fuelStationLocator": "Localizador de estaciones de combustible con precios",
+        "vehicleInspection": "Listas de verificación de inspección de vehículos"
+      },
+      "mockStats": {
+        "activeLoads": "Cargas Activas",
+        "onTime": "Tasa de Puntualidad",
+        "revenue": "Ingresos de Hoy",
+        "efficiency": "Eficiencia de la Flota"
+      }
+    },
+    "keyFeatures": {
+      "backhaulOptimization": "Optimización de Carga de Retorno",
+      "backhaulDescription": "El emparejamiento con IA encuentra cargas de retorno, eliminando millas vacías y aumentando ingresos. Nuestro algoritmo analiza datos históricos, tarifas actuales del mercado y tus preferencias para sugerir las oportunidades de retorno más rentables.",
+      "backhaulImpact": "Reduce las millas vacías en un 60%",
+      "ecoFriendlyRouting": "Enrutamiento Ecológico",
+      "ecoFriendlyDescription": "Reduce tu huella de carbono con rutas optimizadas que consideran eficiencia de combustible, emisiones y seguimiento de compensación de carbono. Elige rutas sostenibles y participa en nuestro programa de logística verde.",
+      "ecoFriendlyImpact": "Rastrea y compensa el 100% de las emisiones",
+      "realTimeTracking": "Seguimiento en Tiempo Real",
+      "realTimeDescription": "Monitorea todos tus vehículos en un mapa interactivo con actualizaciones en vivo. Configura geovallas, recibe alertas de llegada y rastrea múltiples cargas simultáneamente con nuestra tecnología de mapeo avanzada.",
+      "realTimeImpact": "Tasa de entregas puntuales del 99.8%",
+      "smartCalendar": "Vistas Inteligentes de Calendario y Lista",
+      "smartCalendarDescription": "Gestiona tus cargas con interfaces intuitivas de calendario y lista. Programación con arrastrar y soltar, estados codificados por colores y vistas personalizables para adaptarse a tu flujo de trabajo.",
+      "smartCalendarImpact": "Ahorra más de 15 horas semanales en programación",
+      "customizableRoutes": "Preferencias de Ruta Personalizables",
+      "customizableRoutesDescription": "Establece tus preferencias para evitar peajes, malas condiciones de la carretera, puentes bajos y áreas específicas. Nuestro algoritmo respeta tus preferencias mientras optimiza la eficiencia y el costo.",
+      "customizableRoutesImpact": "30% de reducción en retrasos inesperados",
+      "dynamicETA": "Estimación Dinámica de Llegada de Carga",
+      "dynamicETADescription": "Obtén ETAs precisos que se actualizan en tiempo real según el tráfico, clima y descansos del conductor. Comparte actualizaciones automáticas con clientes para mejorar la comunicación.",
+      "dynamicETAImpact": "Aumenta la satisfacción del cliente"
+    },
+    "stats": {
+      "emptyMilesReduction": "Reducción en Millas Vacías",
+      "revenueIncrease": "Aumento en Ingresos",
+      "fuelSavings": "Ahorro en Costo de Combustible",
+      "onTimeDelivery": "Entrega Puntual",
+      "carbonReduction": "Reducción de Huella de Carbono",
+      "timeSaved": "Tiempo Semanal Ahorrado"
+    },
+    "provenResults": "Resultados Comprobados",
+    "provenResultsDescription": "Únete a miles de transportistas que han transformado sus operaciones con WeLoad",
+    "ctaTitle": "¿Listo para Transformar las Operaciones de tu Flota?",
+    "ctaDescription": "Comienza con WeLoad Carrier hoy y experimenta el futuro de la gestión logística",
+    "startTrial": "Comenzar Prueba Gratuita",
+    "scheduleDemo": "Programar una Demostración"
+  },
+  "shipper": {
+    "title": "Shipper",
+    "comingSoon": "Próximamente",
+    "launchDate": "Lanzamiento Q4 2026",
+    "description": "Experimenta el futuro de la gestión logística con nuestra revolucionaria plataforma para embarcadores. Con tecnología de IA, ecológica y construida para la cadena de suministro moderna.",
+    "betaProgram": "Únete a Nuestro Programa Beta",
+    "betaDescription": "Sé de los primeros en experimentar nuestra innovadora plataforma para embarcadores. Lugares limitados disponibles para acceso anticipado.",
+    "joinBeta": "Unirse al Programa Beta",
+    "benefits": {
+      "intelligentBooking": "Reserva Inteligente",
+      "intelligentBookingDesc": "Programación automatizada con planificación predictiva de capacidad",
+      "costOptimization": "Optimización de Costos",
+      "costOptimizationDesc": "Algoritmos de precios dinámicos que reducen costos de envío hasta un 30%",
+      "vettedNetwork": "Red Verificada",
+      "vettedNetworkDesc": "Acceso a una red premium de transportistas con calificaciones verificadas",
+      "instantVisibility": "Visibilidad Instantánea",
+      "instantVisibilityDesc": "Seguimiento en tiempo real y alertas automatizadas de excepciones",
+      "ecoFriendlyShipping": "Envío Ecológico",
+      "ecoFriendlyShippingDesc": "Seguimiento de compensación de carbono y opciones de ruta sostenibles",
+      "riskManagement": "Gestión de Riesgos",
+      "riskManagementDesc": "Verificación automatizada de cumplimiento y seguros"
+    },
+    "stats": {
+      "earlyAccess": "Lugares de Acceso Anticipado",
+      "costReduction": "Reducción de Costos",
+      "uptime": "SLA de Tiempo de Actividad",
+      "support": "Soporte"
+    }
+  },
+  "features": {
+    "title": "Características de",
+    "highlightedWord": "Grado Empresarial",
+    "subtitle": "Construidas con tecnología de vanguardia para impulsar el futuro de la logística",
+    "aiOptimization": "Optimización con IA",
+    "aiOptimizationDesc": "Algoritmos avanzados que optimizan rutas, cargas y precios en tiempo real",
+    "enterpriseSecurity": "Seguridad Empresarial",
+    "enterpriseSecurityDesc": "Cifrado de grado bancario y cumplimiento de estándares de seguridad de la industria",
+    "realTimeAnalytics": "Análisis en Tiempo Real",
+    "realTimeAnalyticsDesc": "Tableros integrales con perspectivas predictivas y reportes",
+    "cloudNative": "Nativo de la Nube",
+    "cloudNativeDesc": "Infraestructura escalable que crece con las necesidades de tu negocio",
+    "mobileFirst": "Primero Móvil",
+    "mobileFirstDesc": "Aplicaciones completamente responsivas optimizadas para todos los dispositivos",
+    "globalReach": "Alcance Global",
+    "globalReachDesc": "Soporte para logística internacional e interfaces multilingües",
+    "platformPerformance": "Rendimiento de la Plataforma",
+    "platformPerformanceDesc": "Construida para escala, diseñada para rendimiento",
+    "fast": "Extremadamente Rápida",
+    "fastDesc": "Tiempo promedio de respuesta",
+    "secure": "Segura",
+    "secureDesc": "SLA de Tiempo de Actividad",
+    "scalable": "Escalable",
+    "scalableDesc": "Transacciones diarias",
+    "efficient": "Eficiente",
+    "efficientDesc": "Tiempo ahorrado",
+    "integration": "Integraciones Perfectas",
+    "integrationsDesc": "Conéctate con tus herramientas y flujos de trabajo existentes a través de nuestra API integral",
+    "integrations": {
+      "erp": "Sistemas ERP",
+      "payment": "Pasarelas de Pago",
+      "mapping": "Servicios de Mapas",
+      "telematics": "Telemetría",
+      "crm": "CRM",
+      "accounting": "Software de Contabilidad"
+    }
+  },
+  "testimonials": {
+    "title": "Lo que Dicen Nuestros Clientes",
+    "subtitle": "Únete a miles de empresas logísticas que confían en WeLoad Solutions",
+    "trustedBy": "Líderes de la Industria Confían",
+    "verifiedCustomer": "Cliente Verificado",
+    "stats": {
+      "rating": "Calificación de Clientes",
+      "retention": "Tasa de Retención",
+      "support": "Cobertura de Soporte",
+      "users": "Usuarios Activos"
+    },
+    "trustedCompanies": "Confiado por Líderes de la Industria",
+    "mock": {
+      "michael": {
+        "content": "La plataforma para transportistas de WeLoad redujo nuestras millas vacías en un 45% y aumentó los ingresos por camión en un 30%. El emparejamiento de cargas con IA es revolucionario."
+      },
+      "sarah": {
+        "content": "La visibilidad en tiempo real y el análisis predictivo han transformado cómo gestionamos nuestra cadena de suministro. La satisfacción del cliente está en su punto más alto."
+      },
+      "david": {
+        "content": "Solo la documentación sin papel nos ahorró 15 horas por semana. A todo el equipo le encanta la interfaz intuitiva y las potentes funciones."
+      },
+      "jessica": {
+        "content": "Hemos probado múltiples plataformas, pero las capacidades de integración y el soporte al cliente de WeLoad no tienen igual en la industria."
+      },
+      "robert": {
+        "content": "La documentación de la API es excelente, y nuestros desarrolladores pudieron integrar WeLoad con nuestros sistemas existentes en solo 2 semanas."
+      },
+      "amanda": {
+        "content": "Los algoritmos de optimización de costos han ahorrado a nuestra empresa más de $2M anuales. El ROI se logró en el primer trimestre."
+      },
+      "roles": {
+        "ceo": "CEO, TransGlobal Logistics",
+        "logisticsDirector": "Directora de Logística, TechCorp Inc",
+        "fleetManager": "Gerente de Flota, Prime Haulers",
+        "vpOperations": "VP de Operaciones, MegaShippers",
+        "cto": "CTO, FastTrack Logistics",
+        "directorSupplyChain": "Directora, Cadena de Suministro Global"
+      },
+      "companies": {
+        "amazon": "Amazon Logistics",
+        "walmart": "Walmart Logistics"
+      }
+    }
+  },
+  "pricing": {
+    "common": {
+      "title": "Precios Sencillos y",
+      "highlightedWord": "Flexibles",
+      "subtitle": "Elige el plan perfecto para tu negocio. Todos los planes incluyen nuestras características principales sin tarifas ocultas.",
+      "transparentPricing": "Precios Transparentes",
+      "monthly": "Mensual",
+      "annual": "Anual",
+      "save20": "Ahorra 20%",
+      "perMonth": "/mes",
+      "saveAmount": "Ahorra ${{amount}}/año",
+      "billedAnnually": "Facturado anualmente a ${{amount}}",
+      "billedMonthly": "Facturado mensualmente",
+      "mostPopular": "Más Popular",
+      "startTrial": "Comenzar Prueba Gratuita",
+      "getStarted": "Comenzar",
+      "contactSales": "Contactar Ventas",
+      "scheduleDemo": "Programar una Demostración"
+    },
+    "carrier": {
+      "title": "Planes para Transportistas",
+      "tiers": {
+        "starter": "Inicial",
+        "starterDesc": "Perfecto para flotas pequeñas que comienzan",
+        "professional": "Profesional",
+        "professionalDesc": "Todo lo que las flotas en crecimiento necesitan",
+        "enterprise": "Empresarial",
+        "enterpriseDesc": "Para operaciones grandes con necesidades personalizadas"
+      },
+      "bestFor": {
+        "smallCarriers": "Pequeñas empresas y startups",
+        "growingFleets": "Negocios en crecimiento y comercio electrónico",
+        "largeFleets": "Grandes empresas y fabricantes"
+      },
+      "features": {
+        "vehicles": "Hasta {{count}} vehículos",
+        "loadMatching": "emparejamiento de cargas",
+        "aiLoadMatching": "Emparejamiento de cargas con IA",
+        "realTimeTracking": "Seguimiento en tiempo real",
+        "digitalPaperwork": "Documentación digital",
+        "backhaulOptimization": "Optimización de carga de retorno",
+        "routeOptimization": "Optimización de ruta",
+        "advancedRouteOptimization": "Optimización avanzada de ruta",
+        "carbonTracking": "Seguimiento de carbono",
+        "carbonTrackingOffset": "Seguimiento y compensación de carbono",
+        "advancedAnalytics": "Análisis avanzado",
+        "apiAccess": "Acceso a API",
+        "basicApiAccess": "Acceso básico a API",
+        "prioritySupport": "Soporte prioritario",
+        "unlimitedVehicles": "Vehículos ilimitados",
+        "enterpriseTracking": "Seguimiento de grado empresarial",
+        "fullDigital": "Transformación digital completa",
+        "customRoute": "Optimización de ruta personalizada",
+        "enterpriseAnalytics": "Análisis empresarial",
+        "fullApi": "Acceso completo a la API",
+        "dedicatedSupport": "Soporte prioritario 24/7",
+        "customIntegrations": "Integraciones personalizadas",
+        "accountManager": "Gerente de cuenta dedicado"
+      }
+    },
+    "shipper": {
+      "title": "Planes para Embarcadores",
+      "joinWaitlist": "Unirse a la Lista de Espera",
+      "tiers": {
+        "basic": "Básico",
+        "basicDesc": "Herramientas esenciales para embarcadores pequeños",
+        "growth": "Crecimiento",
+        "growthDesc": "Escala tus operaciones de envío",
+        "enterprise": "Empresarial",
+        "enterpriseDesc": "Para operaciones grandes con necesidades personalizadas"
+      },
+      "bestFor": {
+        "smallBusinesses": "Pequeñas empresas y startups",
+        "growingBusinesses": "Negocios en crecimiento y comercio electrónico",
+        "enterprises": "Grandes empresas y fabricantes"
+      },
+      "features": {
+        "shipments": "Hasta {{count}} envíos/mes",
+        "unlimitedShipments": "Envíos ilimitados",
+        "carrierMatching": "emparejamiento de transportistas",
+        "aiCarrierMatching": "Emparejamiento de transportistas con IA",
+        "realTimeTracking": "Seguimiento en tiempo real",
+        "basicAnalytics": "Análisis básico",
+        "advancedAnalytics": "Análisis avanzado",
+        "customAnalytics": "Análisis personalizado",
+        "documentManagement": "Gestión de documentos",
+        "documentAutomation": "Automatización de documentos",
+        "emailSupport": "Soporte por correo",
+        "prioritySupport": "Soporte prioritario",
+        "advancedRouting": "Enrutamiento avanzado",
+        "carbonOffset": "Opciones de compensación de carbono",
+        "offsetPrograms": "Programas de compensación de carbono",
+        "apiAccess": "Acceso a API",
+        "basicApiAccess": "Acceso básico a API",
+        "fullApi": "Acceso completo a la API",
+        "customReporting": "Reportes personalizados",
+        "enterpriseTracking": "Seguimiento de grado empresarial",
+        "dedicatedSupport": "Soporte prioritario 24/7",
+        "accountManager": "Gerente de cuenta dedicado",
+        "customIntegrations": "Integraciones personalizadas"
+      }
+    },
+    "calculator": {
+      "savingsCalculator": "Calcula Tus Ahorros Potenciales",
+      "savingsHighlight": "Ahorros Potenciales",
+      "savingsDescription": "Nuestros clientes normalmente ven ahorros significativos en múltiples áreas de sus operaciones. Usa nuestra calculadora para estimar tu ROI potencial.",
+      "emptyMilesReduction": "Reducción promedio en millas vacías",
+      "operationalSavings": "Ahorro promedio en costos operativos",
+      "fuelSavings": "Ahorro promedio en combustible",
+      "onTimeRate": "Tasa de entregas puntuales",
+      "quickEstimate": "Estimación Rápida",
+      "numVehicles": "Número de Vehículos",
+      "monthlyMiles": "Millas Mensuales",
+      "calculateSavings": "Calcular Ahorros",
+      "vehicleOptions": {
+        "1_5": "1-5 vehículos",
+        "6_25": "6-25 vehículos",
+        "26_100": "26-100 vehículos",
+        "100_plus": "100+ vehículos"
+      },
+      "mileageOptions": {
+        "under_50k": "Menos de 50,000 millas",
+        "50k_200k": "50,000-200,000 millas",
+        "200k_500k": "200,000-500,000 millas",
+        "500k_plus": "Más de 500,000 millas"
+      }
+    },
+    "allPlansInclude": {
+      "title": "Todos los Planes Incluyen",
+      "enterpriseSecurity": "Seguridad Empresarial",
+      "securityDesc": "Cifrado de grado bancario y cumplimiento",
+      "uptime": "99.9% Tiempo de Actividad",
+      "uptimeDesc": "Confiabilidad garantizada con SLA",
+      "support24_7": "Soporte 24/7",
+      "supportDesc": "Soporte al cliente las 24 horas",
+      "carbonTrackingFeature": "Seguimiento de Carbono",
+      "carbonDesc": "Monitorea y reduce emisiones"
+    },
+    "finalCta": {
+      "finalCtaTitle": "¿Listo para Comenzar?",
+      "finalCtaDesc": "Únete a miles de transportistas y embarcadores que confían en WeLoad Solutions para optimizar sus operaciones logísticas."
+    }
+  },
+  "faq": {
+    "title": "Preguntas",
+    "highlightedWord": "Frecuentes",
+    "faqHint": "¿Tienes preguntas? Estamos aquí para ayudarte.",
+    "subtitle": "Obtén respuestas a preguntas comunes sobre WeLoad Solutions. ¿No encuentras lo que buscas? Contacta a nuestro equipo de soporte.",
+    "questions": {
+      "freeTrial": "¿Hay una prueba gratuita?",
+      "freeTrialAnswer": "¡Sí! Todos los planes incluyen una prueba gratuita de 30 días con acceso completo a todas las funciones. No se requiere tarjeta de crédito para comenzar.",
+      "switchPlans": "¿Puedo cambiar de plan después?",
+      "switchPlansAnswer": "Absolutamente. Puedes mejorar o degradar tu plan en cualquier momento. Los cambios surten efecto inmediatamente con facturación proporcional.",
+      "paymentMethods": "¿Qué métodos de pago aceptan?",
+      "paymentMethodsAnswer": "Aceptamos todas las principales tarjetas de crédito, PayPal y transferencias bancarias para planes empresariales. Los planes anuales también se pueden pagar por factura.",
+      "setupFee": "¿Hay una tarifa de configuración?",
+      "setupFeeAnswer": "No hay tarifas de configuración para ningún plan. Creemos en precios transparentes sin costos ocultos.",
+      "nonProfitDiscounts": "¿Ofrecen descuentos para organizaciones sin fines de lucro?",
+      "nonProfitDiscountsAnswer": "Sí, ofrecemos precios especiales para organizaciones sin fines de lucro e instituciones educativas. Contacta a nuestro equipo de ventas para detalles.",
+      "cancellationPolicy": "¿Cuál es su política de cancelación?",
+      "cancellationPolicyAnswer": "Puedes cancelar en cualquier momento. Si cancelas, continuarás teniendo acceso hasta el final de tu período de facturación sin cargos adicionales."
+    },
+    "stillHaveQuestions": "¿Aún tienes preguntas?",
+    "stillHaveQuestionsDesc": "Nuestro equipo de soporte está aquí para ayudarte a obtener las respuestas que necesitas.",
+    "contactSupport": "Contactar Soporte",
+    "visitHelpCenter": "Visitar el Centro de Ayuda"
+  },
+  "cta": {
+    "titlePart1": "¿Listo para",
+    "titlePart2": "Tu Logística?",
+    "highlightedTitle": "Transformar",
+    "description": "Únete a miles de empresas que han optimizado sus operaciones con WeLoad Solutions",
+    "scheduleDemo": "Programar una Demostración",
+    "whatYouGet": "Lo que obtendrás:",
+    "benefits": {
+      "freeTrial": "Prueba gratuita de 30 días",
+      "noCreditCard": "No se requiere tarjeta de crédito",
+      "onboardingSpecialist": "Especialista de incorporación dedicado",
+      "prioritySupport": "Soporte prioritario",
+      "integrationAssistance": "Asistencia para integración personalizada"
+    },
+    "otherWays": "Otras formas de conectarte:",
+    "contactMethods": {
+      "emailUs": "Envíanos un correo",
+      "callUs": "Llámanos",
+      "scheduleCall": "Programar una llamada",
+      "consultation": "Reservar una consulta de 30 minutos"
+    },
+    "stats": {
+      "responseTime": "Tiempo de Respuesta",
+      "satisfaction": "Satisfacción",
+      "expertsReady": "Expertos Listos"
+    },
+    "contactForm": {
+      "fullName": "Nombre Completo *",
+      "workEmail": "Correo de Trabajo *",
+      "yourCompany": "Tu Empresa *",
+      "yourRole": "Tu Rol *",
+      "howCanWeHelp": "¿Cómo podemos ayudarte? *",
+      "placeholderName": "John Smith",
+      "placeholderEmail": "john@empresa.com",
+      "placeholderCompany": "Tu Empresa",
+      "placeholderRole": "Selecciona tu rol",
+      "placeholderMessage": "Cuéntanos sobre tus desafíos logísticos...",
+      "roles": {
+        "carrier": "Transportista/Propietario de Flota",
+        "shipper": "Embarcador/Gerente de Logística",
+        "broker": "Agente de Carga",
+        "executive": "Ejecutivo/Tomador de Decisiones",
+        "other": "Otro"
+      },
+      "agreeTerms": "Al enviar, aceptas nuestros Términos y Política de Privacidad",
+      "requestDemo": "Solicitar Demostración"
+    }
+  },
+  "footer": {
+    "tagline": "Revolucionando la tecnología logística con soluciones impulsadas por IA que conectan transportistas y embarcadores para operaciones eficientes y rentables.",
+    "newsletter": {
+      "title": "Mantente Actualizado",
+      "subscribe": "Suscribirse",
+      "emailPlaceholder": "Ingresa tu correo"
+    },
+    "social": {
+      "title": "Conéctate con Nosotros",
+      "platforms": {
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn",
+        "instagram": "Instagram",
+        "youtube": "YouTube"
+      }
+    },
+    "sections": {
+      "product": {
+        "title": "Producto",
+        "links": [
+          "WeLoad Carrier",
+          "WeLoad Shipper",
+          "Características",
+          "Integraciones",
+          "Documentación de API"
+        ]
+      },
+      "company": {
+        "title": "Empresa",
+        "links": ["Sobre Nosotros", "Carreras", "Prensa", "Blog", "Eventos"]
+      },
+      "resources": {
+        "title": "Recursos",
+        "links": [
+          "Documentación",
+          "Centro de Ayuda",
+          "Comunidad",
+          "Socios",
+          "Estado"
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": [
+          "Política de Privacidad",
+          "Términos de Servicio",
+          "Política de Cookies",
+          "GDPR",
+          "Cumplimiento"
+        ]
+      }
+    },
+    "copyright": "© {{year}} WeLoad Solutions. Todos los derechos reservados.",
+    "appStores": {
+      "appStore": {
+        "downloadOn": "Descarga en la",
+        "appStore": "App Store"
+      },
+      "googlePlay": {
+        "getItOn": "Consíguelo en",
+        "googlePlay": "Google Play"
+      }
+    },
+    "bottomLinks": {
+      "cookieSettings": "Configuración de Cookies",
+      "doNotSellMyInfo": "No Vender Mi Información",
+      "sitemap": "Mapa del Sitio"
+    }
+  },
+  "comingSoon": {
+    "title": "WeLoad para Embarcadores",
+    "backToHome": "Volver al Inicio",
+    "description": "Estamos construyendo la plataforma para embarcadores más avanzada en la industria logística. Experimenta envíos inteligentes, análisis predictivo y gestión de operaciones sin problemas.",
+    "estimatedLaunch": "Lanzamiento estimado: {{date}}",
+    "approximation": "Aproximación",
+    "timeRemaining": {
+      "months": "Meses Restantes",
+      "weeks": "Semanas Restantes",
+      "days": "Días Restantes"
+    },
+    "timeline": {
+      "today": "Hoy",
+      "target": "Objetivo: Q4 2026"
+    },
+    "developmentTimeline": "Cronología de Desarrollo",
+    "quarters": {
+      "q1_2025": "Q1 2025",
+      "q3_2025": "Q3 2025",
+      "q1_2026": "Q1 2026",
+      "q3_2026": "Q3 2026"
+    },
+    "launchingSoon": "¡Próximamente en lanzamiento! 🎉",
+    "dateApproximate": "La fecha es aproximada y puede ajustarse según el progreso del desarrollo",
+    "revolutionaryFeatures": "Características Revolucionarias",
+    "features": {
+      "predictiveAnalytics": "Análisis Predictivo",
+      "predictiveAnalyticsDesc": "Perspectivas impulsadas por IA para decisiones de envío óptimas",
+      "smartScheduling": "Programación Inteligente",
+      "smartSchedulingDesc": "Gestión y optimización automatizada de citas",
+      "realTimeAlerts": "Alertas en Tiempo Real",
+      "realTimeAlertsDesc": "Notificaciones instantáneas para excepciones y retrasos",
+      "continuousVisibility": "Visibilidad 24/7",
+      "continuousVisibilityDesc": "Capacidades de seguimiento y monitoreo continuos"
+    },
+    "timeRemainingDescription": {
+      "part1": "Aproximadamente",
+      "part2": "hasta el lanzamiento",
+      "and": "y",
+      "plus": "más",
+      "months": "meses",
+      "weeks": "semanas",
+      "days": "días"
+    },
+    "earlyAccess": "Obtén Acceso Anticipado",
+    "earlyAccessDesc": "Sé de los primeros en experimentar nuestra plataforma",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "workEmail": "Correo de Trabajo *",
+    "companyLabel": "Empresa",
+    "excitedAbout": "¿Qué es lo que más te emociona?",
+    "placeholderFirstName": "Juan",
+    "placeholderLastName": "Pérez",
+    "placeholderEmail": "juan@empresa.com",
+    "placeholderCompany": "Tu Empresa",
+    "placeholderExcitement": "Cuéntanos qué funciones esperas con más ansias...",
+    "requestAccess": "Solicitar Acceso Anticipado",
+    "agreeUpdates": "Al enviar, aceptas recibir actualizaciones sobre el lanzamiento de nuestra plataforma para embarcadores.",
+    "betaProgram": "Programa Beta Comienza Q4 2026",
+    "betaDescription": "Lugares limitados disponibles para nuestro programa beta cerrado. Los registrados para acceso anticipado recibirán consideración prioritaria.",
+    "betaBenefits": {
+      "priorityAccess": "Acceso Prioritario",
+      "priorityAccessDesc": "Los primeros registrados obtienen acceso primero",
+      "directFeedback": "Comentarios Directos",
+      "directFeedbackDesc": "Ayuda a dar forma a las características de la plataforma",
+      "specialPricing": "Precios Especiales",
+      "specialPricingDesc": "Tarifas exclusivas para usuarios beta"
+    },
+    "thankYou": "¡Gracias!",
+    "thankYouMessage": "Has sido agregado a nuestra lista de acceso anticipado. Nos contactaremos contigo {{contactTiming}}.",
+    "contactTiming": {
+      "soon": "pronto",
+      "long": "a medida que nos acercamos al lanzamiento"
+    }
+  },
+  "language": {
+    "english": "Inglés",
+    "french": "Francés",
+    "spanish": "Español",
+    "selectLanguage": "Seleccionar Idioma",
+    "changeLanguage": "Cambiar Idioma"
+  }
+}
