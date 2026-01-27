@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   Check,
   X,
@@ -13,7 +12,7 @@ import {
   Cloud,
   Clock,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const Pricing = () => {
@@ -24,6 +23,19 @@ const Pricing = () => {
   const [activeTier, setActiveTier] = useState<"carrier" | "shipper">(
     "carrier",
   );
+  const [isInView, setIsInView] = useState(false);
+  const [pricingCardsInView, setPricingCardsInView] = useState(
+    Array(3).fill(false),
+  );
+  const [savingsInView, setSavingsInView] = useState(false);
+  const [featuresInView, setFeaturesInView] = useState(false);
+  const [ctaInView, setCtaInView] = useState(false);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const pricingRef = useRef<HTMLDivElement>(null);
+  const savingsRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   const toggleBillingCycle = () => {
     setBillingCycle((prev) => (prev === "monthly" ? "annual" : "monthly"));
@@ -340,32 +352,178 @@ const Pricing = () => {
     },
   ];
 
+  // Intersection Observer for main section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for pricing cards
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && pricingRef.current) {
+            const timeouts = tiers.map((_, index) => {
+              return setTimeout(() => {
+                setPricingCardsInView((prev) => {
+                  const newStates = [...prev];
+                  newStates[index] = true;
+                  return newStates;
+                });
+              }, index * 100);
+            });
+            return () => timeouts.forEach((t) => clearTimeout(t));
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    if (pricingRef.current) {
+      observer.observe(pricingRef.current);
+    }
+
+    return () => {
+      if (pricingRef.current) {
+        observer.unobserve(pricingRef.current);
+      }
+    };
+  }, [tiers]);
+
+  // Intersection Observer for savings section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSavingsInView(true);
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    if (savingsRef.current) {
+      observer.observe(savingsRef.current);
+    }
+
+    return () => {
+      if (savingsRef.current) {
+        observer.unobserve(savingsRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for features section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFeaturesInView(true);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    if (featuresRef.current) {
+      observer.observe(featuresRef.current);
+    }
+
+    return () => {
+      if (featuresRef.current) {
+        observer.unobserve(featuresRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for CTA section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCtaInView(true);
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    if (ctaRef.current) {
+      observer.observe(ctaRef.current);
+    }
+
+    return () => {
+      if (ctaRef.current) {
+        observer.unobserve(ctaRef.current);
+      }
+    };
+  }, []);
+
+  // Custom CSS for animations
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+      .animate-rotate {
+        animation: rotate 120s linear infinite;
+      }
+      .animate-float {
+        animation: float 100s ease-in-out infinite;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
     <section
       id="pricing"
       className="py-20 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden"
+      ref={sectionRef}
     >
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-          className="absolute -right-64 -top-64 w-96 h-96 bg-gradient-to-br from-primary-100/20 to-secondary-100/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-          className="absolute -left-64 -bottom-64 w-96 h-96 bg-gradient-to-br from-primary-100/10 to-emerald-100/10 rounded-full blur-3xl"
-        />
+        <div className="absolute -right-64 -top-64 w-96 h-96 bg-gradient-to-br from-primary-100/20 to-secondary-100/20 rounded-full blur-3xl animate-rotate" />
+        <div className="absolute -left-64 -bottom-64 w-96 h-96 bg-gradient-to-br from-primary-100/10 to-emerald-100/10 rounded-full blur-3xl animate-float" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-12 md:mb-16"
+        <div
+          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
         >
           <div className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-full mb-4 md:mb-6 border border-primary-100">
             <Star className="w-4 h-4 mr-2" />
@@ -383,22 +541,21 @@ const Pricing = () => {
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             {t("pricing.common.subtitle")}
           </p>
-        </motion.div>
+        </div>
 
         {/* Toggle between Carrier and Shipper Pricing */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex justify-center mb-8 md:mb-12"
+        <div
+          className={`flex justify-center mb-8 md:mb-12 transition-all duration-700 delay-100 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
           <div className="inline-flex items-center bg-gray-100 rounded-xl md:rounded-2xl p-1">
             <button
               onClick={() => setActiveTier("carrier")}
-              className={`px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg md:rounded-xl font-semibold transition-all text-sm sm:text-base ${
+              className={`px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg md:rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeTier === "carrier"
-                  ? "bg-white text-gray-900 shadow-md"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-900 shadow-md hover:scale-105"
+                  : "text-gray-600 hover:text-gray-900 hover:scale-105"
               } cursor-pointer`}
             >
               <div className="flex items-center space-x-1 sm:space-x-2">
@@ -408,10 +565,10 @@ const Pricing = () => {
             </button>
             <button
               onClick={() => setActiveTier("shipper")}
-              className={`px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg md:rounded-xl font-semibold transition-all text-sm sm:text-base ${
+              className={`px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-lg md:rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                 activeTier === "shipper"
-                  ? "bg-white text-gray-900 shadow-md"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white text-gray-900 shadow-md hover:scale-105"
+                  : "text-gray-600 hover:text-gray-900 hover:scale-105"
               } cursor-pointer`}
             >
               <div className="flex items-center space-x-1 sm:space-x-2">
@@ -423,18 +580,19 @@ const Pricing = () => {
               </div>
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Billing Toggle */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center items-center mb-10 md:mb-16"
+        <div
+          className={`flex justify-center items-center mb-10 md:mb-16 transition-all duration-700 delay-200 ${
+            isInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
         >
           <div className="flex items-center space-x-4 sm:space-x-6">
             <span
-              className={`font-medium text-sm sm:text-base ${billingCycle === "monthly" ? "text-gray-900" : "text-gray-500"}`}
+              className={`font-medium text-sm sm:text-base transition-colors duration-300 ${
+                billingCycle === "monthly" ? "text-gray-900" : "text-gray-500"
+              }`}
             >
               {t("pricing.common.monthly")}
             </span>
@@ -442,18 +600,19 @@ const Pricing = () => {
               onClick={toggleBillingCycle}
               className="relative w-12 h-7 sm:w-14 sm:h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full cursor-pointer"
             >
-              <motion.div
-                className="absolute top-0.5 sm:top-1 w-6 h-6 bg-white rounded-full shadow-lg"
-                animate={{
+              <div
+                className="absolute top-0.5 sm:top-1 w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300"
+                style={{
                   left:
                     billingCycle === "monthly" ? "4px" : "calc(100% - 28px)",
                 }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             </button>
             <div className="flex items-center space-x-2">
               <span
-                className={`font-medium text-sm sm:text-base ${billingCycle === "annual" ? "text-gray-900" : "text-gray-500"}`}
+                className={`font-medium text-sm sm:text-base transition-colors duration-300 ${
+                  billingCycle === "annual" ? "text-gray-900" : "text-gray-500"
+                }`}
               >
                 {t("pricing.common.annual")}
               </span>
@@ -462,27 +621,29 @@ const Pricing = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20 items-stretch">
+        <div
+          ref={pricingRef}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20 items-stretch"
+        >
           {tiers.map((tier, index) => (
-            <motion.div
+            <div
               key={tier.name}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className={`relative rounded-2xl md:rounded-3xl border-2 ${
+              className={`relative rounded-2xl md:rounded-3xl border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 tier.popular
                   ? "border-primary-500 shadow-xl md:shadow-2xl"
                   : "border-gray-200 shadow-lg hover:border-primary-200"
-              } bg-white overflow-hidden transition-all duration-300 flex flex-col h-full`}
+              } bg-white overflow-hidden flex flex-col h-full ${
+                pricingCardsInView[index]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
             >
               {tier.popular && (
                 <div className="absolute top-1 left-1/2 -translate-x-1/2 z-10">
-                  <div className="px-4 sm:px-6 py-1.5 sm:py-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold rounded-full shadow-lg text-sm sm:text-base whitespace-nowrap">
+                  <div className="px-4 sm:px-6 py-1.5 sm:py-2 bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold rounded-full shadow-lg text-sm sm:text-base whitespace-nowrap animate-pulse">
                     {t("pricing.common.mostPopular")}
                   </div>
                 </div>
@@ -494,7 +655,7 @@ const Pricing = () => {
                   <div className="flex-grow">
                     <div className="flex items-center space-x-3 mb-2">
                       <div
-                        className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${tier.color} rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0`}
+                        className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${tier.color} rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110`}
                       >
                         <div className="text-white w-5 h-5 sm:w-6 sm:h-6">
                           {tier.icon}
@@ -553,7 +714,10 @@ const Pricing = () => {
                 {/* Features List */}
                 <div className="space-y-3 sm:space-y-4 flex-grow">
                   {tier.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start">
+                    <div
+                      key={featureIndex}
+                      className="flex items-start transition-all duration-300 hover:translate-x-2"
+                    >
                       {feature.included ? (
                         <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
                       ) : (
@@ -571,28 +735,28 @@ const Pricing = () => {
 
               {/* CTA Button */}
               <div className="p-6 sm:p-8 pt-0 mt-auto">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`w-full py-3 sm:py-4 font-semibold rounded-lg sm:rounded-xl transition-all text-sm sm:text-base ${
+                <button
+                  className={`w-full py-3 sm:py-4 font-semibold rounded-lg sm:rounded-xl transition-all duration-300 text-sm sm:text-base hover:scale-105 active:scale-95 ${
                     tier.popular
                       ? "bg-gradient-to-r from-primary-600 to-secondary-500 text-white hover:shadow-lg sm:hover:shadow-xl"
                       : "bg-gray-100 text-gray-900 hover:bg-gray-200"
                   }`}
                 >
                   {tier.cta}
-                </motion.button>
+                </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Savings Calculator */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 md:mb-20"
+        <div
+          ref={savingsRef}
+          className={`mb-12 md:mb-20 transition-all duration-700 ${
+            savingsInView
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
         >
           <div className="bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500 rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 text-white">
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -608,13 +772,13 @@ const Pricing = () => {
                 </p>
                 <div className="grid grid-cols-2 gap-4 md:gap-6">
                   {savings.map((saving, index) => (
-                    <motion.div
+                    <div
                       key={saving.description}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.1 * index }}
-                      className="bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl p-4 md:p-6 border border-white/20"
+                      className={`bg-white/10 backdrop-blur-sm rounded-lg md:rounded-xl p-4 md:p-6 border border-white/20 transition-all duration-500 delay-${index * 100} ${
+                        savingsInView
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-95"
+                      }`}
                     >
                       <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">
                         {saving.amount}
@@ -622,7 +786,7 @@ const Pricing = () => {
                       <div className="text-white/80 text-xs sm:text-sm">
                         {saving.description}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -635,7 +799,7 @@ const Pricing = () => {
                     <label className="block text-white/80 mb-1 md:mb-2 text-sm sm:text-base">
                       {t("pricing.calculator.numVehicles")}
                     </label>
-                    <select className="w-full px-4 py-2.5 md:py-3 bg-white/20 border border-white/30 rounded-lg md:rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 text-sm sm:text-base">
+                    <select className="w-full px-4 py-2.5 md:py-3 bg-white/20 border border-white/30 rounded-lg md:rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 text-sm sm:text-base transition-all duration-300 hover:bg-white/30">
                       {vehicleOptions.map((option, index) => (
                         <option key={index} className="bg-gray-700">
                           {option}
@@ -647,7 +811,7 @@ const Pricing = () => {
                     <label className="block text-white/80 mb-1 md:mb-2 text-sm sm:text-base">
                       {t("pricing.calculator.monthlyMiles")}
                     </label>
-                    <select className="w-full px-4 py-2.5 md:py-3 bg-white/20 border border-white/30 rounded-lg md:rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 text-sm sm:text-base">
+                    <select className="w-full px-4 py-2.5 md:py-3 bg-white/20 border border-white/30 rounded-lg md:rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 text-sm sm:text-base transition-all duration-300 hover:bg-white/30">
                       {mileageOptions.map((option, index) => (
                         <option key={index} className="bg-gray-700">
                           {option}
@@ -655,40 +819,38 @@ const Pricing = () => {
                       ))}
                     </select>
                   </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full py-3 md:py-4 bg-white text-primary-600 font-semibold rounded-lg md:rounded-xl hover:shadow-lg md:hover:shadow-xl transition-all cursor-pointer text-sm sm:text-base"
-                  >
+                  <button className="w-full py-3 md:py-4 bg-white text-primary-600 font-semibold rounded-lg md:rounded-xl hover:shadow-lg md:hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-sm sm:text-base">
                     {t("pricing.calculator.calculateSavings")}
-                  </motion.button>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* All Plans Include Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 md:mb-20"
+        <div
+          ref={featuresRef}
+          className={`mb-12 md:mb-20 transition-all duration-700 ${
+            featuresInView
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12">
             {t("pricing.allPlansInclude.title")}
           </h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {allPlansFeatures.map((feature, index) => (
-              <motion.div
+              <div
                 key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
+                className={`text-center transition-all duration-700 delay-${index * 100} ${
+                  featuresInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
               >
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-50 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary-50 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 transition-transform duration-300 hover:scale-110">
                   <div className="text-primary-600">{feature.icon}</div>
                 </div>
                 <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
@@ -697,17 +859,17 @@ const Pricing = () => {
                 <p className="text-gray-600 text-sm sm:text-base">
                   {feature.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
+        <div
+          ref={ctaRef}
+          className={`text-center transition-all duration-700 ${
+            ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
         >
           <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl md:rounded-3xl p-6 md:p-12 border border-primary-100">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
@@ -717,23 +879,15 @@ const Pricing = () => {
               {t("pricing.finalCta.finalCtaDesc")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold rounded-lg md:rounded-xl hover:shadow-lg md:hover:shadow-xl transition-all cursor-pointer text-sm md:text-base"
-              >
+              <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-semibold rounded-lg md:rounded-xl hover:shadow-lg md:hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-sm md:text-base">
                 {t("pricing.common.startTrial")}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 md:px-8 py-3 md:py-4 bg-white text-gray-900 font-semibold rounded-lg md:rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all cursor-pointer text-sm md:text-base"
-              >
+              </button>
+              <button className="px-6 md:px-8 py-3 md:py-4 bg-white text-gray-900 font-semibold rounded-lg md:rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-sm md:text-base">
                 {t("pricing.common.scheduleDemo")}
-              </motion.button>
+              </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

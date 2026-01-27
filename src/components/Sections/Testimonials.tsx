@@ -1,11 +1,15 @@
-import { motion } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const Testimonials = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const [cardStates, setCardStates] = useState(Array(6).fill(false));
+  const [statsInView, setStatsInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   // You could also move these to translations if they need to be multilingual
   const testimonials = [
@@ -85,17 +89,73 @@ const Testimonials = () => {
     );
   };
 
+  // Intersection Observer for section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          // Animate cards with staggered delay
+          const timeouts = testimonials.map((_, index) => {
+            return setTimeout(() => {
+              setCardStates((prev) => {
+                const newStates = [...prev];
+                newStates[index] = true;
+                return newStates;
+              });
+            }, index * 100);
+          });
+
+          return () => timeouts.forEach((t) => clearTimeout(t));
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Intersection Observer for stats
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsInView(true);
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section
       id="testimonials"
-      className="py-20 bg-gradient-to-b from-gray-50 to-white"
+      className="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+      ref={sectionRef}
     >
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+        <div
+          className={`text-center mb-16 transition-all duration-700 ${
+            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
         >
           <div className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full mb-4">
             <Quote className="w-4 h-4 mr-2" />
@@ -110,19 +170,18 @@ const Testimonials = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t("testimonials.subtitle")}
           </p>
-        </motion.div>
+        </div>
 
         {/* Testimonial Cards Grid */}
         <div className="cursor-pointer grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={testimonial.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className={`bg-white rounded-2xl p-8 shadow-lg border border-gray-100 ${index === currentIndex ? "ring-2 ring-primary-500" : ""}`}
+              className={`bg-white rounded-2xl p-8 shadow-lg border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl ${
+                cardStates[index]
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              } ${index === currentIndex ? "ring-2 ring-primary-500" : ""}`}
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-4">
@@ -159,7 +218,7 @@ const Testimonials = () => {
                   {testimonial.company}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -167,7 +226,7 @@ const Testimonials = () => {
         <div className="flex items-center justify-center gap-4 mb-20">
           <button
             onClick={prevTestimonial}
-            className="p-3 bg-white border border-gray-200 rounded-full hover:border-primary-300 transition-colors"
+            className="p-3 bg-white border border-gray-200 rounded-full hover:border-primary-300 hover:scale-110 transition-all duration-300 active:scale-95"
             aria-label={t("common.previous")}
           >
             <ChevronLeft className="w-6 h-6 text-gray-600" />
@@ -178,7 +237,11 @@ const Testimonials = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? "bg-primary-600 w-8" : "bg-gray-300"}`}
+                className={`h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-primary-600 w-8"
+                    : "bg-gray-300 w-3 hover:bg-gray-400"
+                }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
@@ -186,7 +249,7 @@ const Testimonials = () => {
 
           <button
             onClick={nextTestimonial}
-            className="p-3 bg-white border border-gray-200 rounded-full hover:border-primary-300 transition-colors"
+            className="p-3 bg-white border border-gray-200 rounded-full hover:border-primary-300 hover:scale-110 transition-all duration-300 active:scale-95"
             aria-label={t("common.next")}
           >
             <ChevronRight className="w-6 h-6 text-gray-600" />
@@ -194,51 +257,56 @@ const Testimonials = () => {
         </div>
 
         {/* Stats Banner */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-primary-500 to-secondary-500 rounded-3xl p-8 md:p-12 text-white"
+        <div
+          ref={statsRef}
+          className={`bg-gradient-to-r from-primary-500 to-secondary-500 rounded-3xl p-8 md:p-12 text-white transition-all duration-700 ${
+            statsInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
         >
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center">
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                className={`transition-all duration-700 delay-${index * 100} ${
+                  statsInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
               >
                 <div className="text-4xl md:text-5xl font-bold mb-2">
                   {stat.value}
                 </div>
                 <div className="text-white/90">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Trusted Companies */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-20 text-center"
+        <div
+          className={`mt-20 text-center transition-all duration-700 ${
+            isInView ? "opacity-100" : "opacity-0"
+          }`}
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-10">
             {t("testimonials.trustedCompanies")}
           </h3>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-            {trustedCompanies.map((company) => (
+            {trustedCompanies.map((company, index) => (
               <div
                 key={company}
-                className="text-lg md:text-2xl font-bold text-gray-400"
+                className={`text-lg md:text-2xl font-bold text-gray-400 transition-all duration-500 hover:scale-110 hover:opacity-100 ${
+                  isInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {company}
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,9 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
@@ -28,35 +28,46 @@ const BackToTop = () => {
   }, []);
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 p-4 bg-gradient-to-br from-primary-600 to-secondary-500 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all cursor-pointer group"
-          aria-label="Back to top"
-        >
-          <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
-
-          {/* Pulse effect */}
-          <motion.div
-            className="absolute inset-0 rounded-xl border-2 border-white/30"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+    <div
+      className={`fixed bottom-8 right-8 z-40 transition-all duration-300 ${
+        isVisible
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 translate-y-10 pointer-events-none"
+      }`}
+    >
+      <button
+        onClick={scrollToTop}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative p-4 bg-gradient-to-br from-primary-600 to-secondary-500 text-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer group active:scale-95"
+        aria-label="Back to top"
+      >
+        {/* Main icon with hover effect */}
+        <div className="relative z-10">
+          <ArrowUp
+            className={`w-6 h-6 transition-all duration-300 ${
+              isHovered ? "-translate-y-1 rotate-12" : ""
+            }`}
           />
+        </div>
 
-          {/* Tooltip on hover */}
-          <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            Back to top
-            <div className="absolute top-full right-4 -mt-1 w-2 h-2 bg-gray-900 rotate-45" />
-          </div>
-        </motion.button>
-      )}
-    </AnimatePresence>
+        {/* Pulse ring effect using Tailwind's animate-ping */}
+        <div className="absolute inset-0 rounded-xl border-2 border-white/30 animate-ping [animation-duration:2s]" />
+
+        {/* Glow effect on hover */}
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-500/30 to-secondary-400/30 blur-sm group-hover:opacity-100 opacity-0 transition-opacity duration-300" />
+      </button>
+
+      {/* Tooltip */}
+      <div
+        className={`absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg transition-all duration-300 whitespace-nowrap pointer-events-none ${
+          isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+        }`}
+      >
+        Back to top
+        <div className="absolute top-full right-4 -mt-1 w-2 h-2 bg-gray-900 rotate-45" />
+      </div>
+    </div>
   );
 };
 

@@ -62,8 +62,7 @@
       "title": "WeLoad Platform",
       "subtitle": "Live Operations Dashboard",
       "live": "Live Data",
-      "activeLoads": "Active Loads & Tracking",
-      "realTime": "Real-time updates"
+      "activeLoads": "Active Loads & Tracking"
     }
   },
   "carrier": {

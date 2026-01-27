@@ -62,8 +62,7 @@
       "title": "Plataforma WeLoad",
       "subtitle": "Tablero de operaciones en vivo",
       "live": "Datos en vivo",
-      "activeLoads": "Cargas activas y seguimiento",
-      "realTime": "Actualizaciones en tiempo real"
+      "activeLoads": "Cargas activas y seguimiento"
     }
   },
   "carrier": {

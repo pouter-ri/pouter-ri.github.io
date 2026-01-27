@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
 import Hero from "../components/Sections/Hero";
@@ -30,12 +29,7 @@ const Home = () => {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen relative"
-    >
+    <div className="min-h-screen relative">
       <Navbar />
       <main>
         <Hero />
@@ -49,7 +43,7 @@ const Home = () => {
       </main>
       <Footer />
       <BackToTop />
-    </motion.div>
+    </div>
   );
 };
 
